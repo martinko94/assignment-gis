@@ -1,0 +1,58 @@
+<!-- Default home page -->
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600' rel='stylesheet' type='text/css'>
+
+<!--div class="col-md-3" style="height:50px;background:grey;">
+</div>
+<!--div class="container"-->
+  <div class="row" style="padding-top:15px;padding-bottom:15px;">
+    <div class="col-md-4">
+      <div style="padding:15px;">
+        <div class="row" style="padding:15px; text-align:center;">
+            <img src="/images/vlado.jpg" width="180">
+            <h5>Let Vlado help you find your future home!</h5>
+            <h6>Please select three preferred locations and fill in the form. Then click search.</h6>
+        </div>
+        <div class="form-group" style="display:none;">
+          <label for="distance">Search radius (in meters):</label>
+          <select class="form-control" id="distance" style="width:100%;">
+            <option>500</option>
+            <option>750</option>
+            <option>1000</option>
+            <option>1500</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Age of children (if applicable):</label><br>
+          <label class="checkbox-inline"><input id="kindergarten" class="check" type="checkbox" value="kindergarten"><6 years</label>
+          <label class="checkbox-inline"><input id="school" class="check" type="checkbox" value="school">6-14 years</label>
+          <label class="checkbox-inline"><input id="college" class="check" type="checkbox" value="college">>14 years</label>
+        </div>
+        <div class="form-group"><label>Preferred leisure activities:</label><br>
+          <label class="checkbox-inline"><input id="sports" type="checkbox" value="sports">Sports</label>
+          <label class="checkbox-inline"><input id="culture" type="checkbox" value="culture">Culture</label>
+          <label class="checkbox-inline"><input id="nightlife" type="checkbox" value="nightlife">Night Life</label>
+        </div>
+        <div class="form-group">
+          <label class="checkbox-inline"><input id="car" type="checkbox" value="car">Check if you have a car</label>
+        </div>
+        <div>
+          <button id="search" class="btn btn-primary">Search</button>
+          <button id="evaluate" class="btn btn-primary">Evaluate</button>
+          <button id="vycisti" class="btn btn-danger">Clear</button>
+          <button id="vycistiM" class="btn btn-warning">Clear Marks</button>
+        </div>
+        <div id="perc" class="form-group" style="width:100%;display:none;"><label>City park land percentage in radius area:</label><br>
+          <label>First point<input id="vystup1" type="text" disabled></label>
+          <label>Second point<input id="vystup2" type="text" disabled></label>
+          <label>Third point<input id="vystup3" type="text" disabled></label>
+        </div>
+          
+      </div>
+    </div>
+    <div class="col-md-8">
+        <div class="container">
+        <div id="mapa" style="width:810px;height:600px;"></div>
+      </div>
+    </div>
+  </div>
+<!--/div-->
