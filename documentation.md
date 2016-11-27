@@ -11,6 +11,8 @@ Najdôležitejšie funkcie sú:
 
 Aplikácia má backend aj frontend časť, backend je riešený pomocou technolódie node.js a frameworku sails.js, ktorý používa základy ExpressJS. Aplikácia používa databázu Postgis. Frontendová časť aplikácie je riešená v HTML a CSS a používa knižnicu Mapbox.js.
 
+Pri vymýšľaní témy projektu som sa inšpiroval televíznou reláciou Nové bývanie, ktorú moderuje Vlado Voštinár, preto môžeme v aplikácii vidieť referenciu na túto reláciu. :) 
+
 # Frontend
 
 Frontendová aplikácia je statická HTML stránka (`index.html`), rozdelená na dve časti. V pravej časti máme mapu vygenerovanú pomocou mapbox.js a v ľavej dotazník a riadiace tlačidlá. Na základe používateľského vstupu v dotazníku je možné pridať dodatočné kritériá na vyhodnocovanie a zobrazenie objektov v okolí zvoleného bodu. Stránka potrebuje pre svoj chod JavaScript súbory (`main.js`), (`searches.js`) a (`ratings.js`), ktoré sa nachádzajú v priečinku assets. Tieto súbory obsahujú funkcionalitu potrebnú na prepojenie frontendu a backendu a vyhodnocovanie vstupu. Mapa na stránke je v klasickom štýle mapbox.streets bez dodatočných úprav.
