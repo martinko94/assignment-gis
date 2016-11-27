@@ -1,0 +1,89 @@
+﻿--select name, ST_AsGeoJSON(ST_Transform(way,4326)) as geojson from planet_osm_point where shop = 'supermarket';
+
+select ST_distance(ST_Transform(
+	(select way from planet_osm_point where name = 'Most SNP' limit 1)
+
+,4326),ST_Transform(way,4326)) from planet_osm_point where name = 'Historické múzeum SNM'
+
+--ST_AsGeoJSON(ST_Transform(way,4326)),
+
+select name, way as geojson from planet_osm_point where name = 'Most SNP'
+
+select name, ST_AsGeoJSON(ST_Transform(way,4326)) as geojson from planet_osm_point where st_distance(ST_GeographyFromText('SRID=4326;POINT(17.113780975341797 48.143067040433166)'),ST_Transform(way,4326)::geography)<100
+
+select st_distance(ST_GeographyFromText('SRID=4326;POINT(17.113780975341797 48.143067040433166)'),ST_Transform(way,4326)::geography) from planet_osm_point order by st_distance asc
+
+select name, ST_AsGeoJSON(ST_Transform(ST_Centroid(way),4326)) as geojson from planet_osm_polygon as pg where st_distance(ST_GeographyFromText('SRID=4326;POINT(17.113780975341797 48.143067040433166)'),ST_Transform(way,4326)::geography)<100 and pg.amenity='school' or pg.amenity='college';
+select name, ST_AsGeoJSON(ST_Transform(way,4326)) as geojson from planet_osm_point as pt where pt.amenity='school' or pt.amenity='college' and st_distance(ST_GeographyFromText('SRID=4326;POINT(17.113780975341797 48.143067040433166)'),ST_Transform(way,4326)::geography)<100;
+--where pg.amenity='college' or pg.amenity='school' or pt.amenity='college' or pt.amenity='school' limit 100
+
+select name, ST_AsGeoJSON(ST_Transform((way),4326)) --name, shop, ST_AsGeoJSON(ST_Transform((way),4326)) 
+from planet_osm_point
+			where st_distance(
+				ST_GeographyFromText('SRID=4326;POINT(17.037616968154907 48.18113911887265)'),
+				ST_Transform(way,4326)::geography)<1000
+			and (amenity = 'school' or amenity = 'college')
+union
+select name, ST_AsGeoJSON(ST_Transform((way),4326)) --name, shop, ST_AsGeoJSON(ST_Transform((way),4326)) 
+from planet_osm_polygon
+			where st_distance(
+				ST_GeographyFromText('SRID=4326;POINT(17.037616968154907 48.18113911887265)'),
+				ST_Transform(way,4326)::geography)<1000
+			and (amenity = 'school' or amenity = 'college')
+
+
+
+
+
+
+
+
+select * from planet_osm_point where amenity='pharmacy'
+
+select * from planet_osm_polygon where landuse = 'forest' or landuse = 'grass' or landuse = 'greenfield' or landuse='meadow' or landuse='village_green'
+
+select leisure,sport from planet_osm_polygon where st_dwithin(
+						ST_GeographyFromText('SRID=4326;POINT(17.037616968154907 48.18113911887265)'),
+						ST_Transform(way,4326)::geography,500) and sport!=''
+union all
+select leisure,sport from planet_osm_point where st_dwithin(
+						ST_GeographyFromText('SRID=4326;POINT(17.037616968154907 48.18113911887265)'),
+						ST_Transform(way,4326)::geography,500) and sport!=''
+				
+select * from planet_osm_point where amenity='arts_centre' or amenity='cinema' or amenity='community_centre' or amenity='community_centre' or amenity='theatre'
+
+
+
+
+
+
+select * from planet_osm_polygon where public_transport='platform'
+
+
+
+with lekarne as (	select * from planet_osm_point where (amenity='pharmacy')
+			union all
+			select * from planet_osm_point where (amenity='pharmacy')
+					)
+
+with liekaren as (	select name, amenity, ST_AsGeoJSON(ST_Transform(way,4326)) as geojson,st_distance(
+					ST_GeographyFromText('SRID=4326;POINT(17.037616968154907 48.18113911887265)'),
+					ST_Transform(way,4326)::geography) as distance
+					from planet_osm_point
+					where st_distance(
+					ST_GeographyFromText('SRID=4326;POINT(17.037616968154907 48.18113911887265)'),
+					ST_Transform(way,4326)::geography)<1500
+					and (amenity='pharmacy')
+				union all
+				select name, amenity, ST_AsGeoJSON(ST_Transform(ST_Centroid(way),4326)) as geojson,st_distance(
+					ST_GeographyFromText('SRID=4326;POINT(17.037616968154907 48.18113911887265)'),
+					ST_Transform(way,4326)::geography) as distance
+					from planet_osm_polygon
+					where st_distance(
+					ST_GeographyFromText('SRID=4326;POINT(17.037616968154907 48.18113911887265)'),
+					ST_Transform(way,4326)::geography)<1500
+					and (amenity='pharmacy')
+					)
+select min(distance) from liekaren
+
+select * from planet_osm_polygon where amenity='parking'
