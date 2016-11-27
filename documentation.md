@@ -23,7 +23,7 @@ Takto vyzerá výstup aplikácie po použití tlačidla vyhľadávania Search:
 Po vyhľadaní si môžeme vyhodnotiť vyhľadávanie pomocou tlačidla Evaluate:
 ![Screenshot](screen-eval.png)
 
-V tomto prípade aplikácia vyhodnotila ako najlepšiu lokalitu okrajovú časť Petržalky. 
+V tomto prípade aplikácia vyhodnotila ako najlepšiu lokalitu okrajovú časť Petržalky. Vidíme, že aplikácia nám zvýraznila najlepšiu lokalitu zmenou kurzora na zlatú farbu a ikonu s hviezdičkou. 
 
 # Backend
 
